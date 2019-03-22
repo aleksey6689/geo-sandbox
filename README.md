@@ -1,24 +1,84 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Test app for checking behavior PostGIS extension pg for rails.
+For resolving overlap problems for polygons just run update_overlap methods for the current polygon in rails console.
 
-Things you may want to cover:
+```
+Example: Polygon.last.update_overlap
+```
 
-* Ruby version
+# Development Stack
+___
+[Ruby on Rails 5](http://rubyonrails.org/) - Ruby Framework
+___
+[PostgreSQL 9.5](https://www.postgresql.org/) - Most advanced open source relational database
+___
+[Postgis](https://postgis.net/) - Spatial and Geographic objects for PostgreSQL
+___
 
-* System dependencies
+# Install Application on Mac
 
-* Configuration
+Install [Brew](http://brew.sh/) and packages
 
-* Database creation
+```
+$ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
 
-* Database initialization
+Install [Install PG](https://www.postgresql.org/)
 
-* How to run the test suite
+```
+$ brew install postgresql
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+Install [Install postgis](https://postgis.net/)
 
-* Deployment instructions
+```
+$ brew install postgis
+```
 
-* ...
+
+
+Install [RVM](https://github.com/rvm/rvm)
+
+```
+$ curl -L https://get.rvm.io | bash -s stable --autolibs=enabled --ruby
+```
+
+Install Ruby-2.6
+
+```
+$ rvm install 2.6.0
+```
+
+Create gemset for app ( where ruby-head - ruby version and "geo-sandbox" - gemset for this ruby version )
+
+```
+$ cd /<application_path>
+$ rvm use ruby-head@geo-sandbox --create --default
+```
+
+Install gems for Gemfile
+
+```
+$ cd /<application_path>
+$ gem install bundle
+$ bundle install
+```
+
+Copy config/database_example.yml in directory config with name database.yml 
+
+Crate db with seed data
+
+```
+$ cd /<application_path>
+$ rails db:create
+$ rails db:migrate
+$ rails db:seed
+```
+
+Start Application
+
+```
+$ cd /<application_path>
+$ rails s
+```
