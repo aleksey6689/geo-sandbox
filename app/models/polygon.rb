@@ -7,4 +7,6 @@ class Polygon < ApplicationRecord
 
   has_many :addresses
 
+  validates :area, presence: true
+
 end
